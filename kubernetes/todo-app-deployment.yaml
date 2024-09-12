@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: react-todo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: react-todo-app
+  template:
+    metadata:
+      labels:
+        app: react-todo-app
+    spec:
+      containers:
+        - name: react-todo-app
+          image: 975049936741.dkr.ecr.ap-south-1.amazonaws.com/todo-app-ecr:todo-app-image  # Updated ECR repo and image
+          ports:
+            - containerPort: 80
