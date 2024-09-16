@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: react-todo-app
-          image: 975049936741.dkr.ecr.ap-south-1.amazonaws.com/todo-app-ecr:todo-app-image  # Updated ECR repo and image
+          image: 975049936741.dkr.ecr.ap-south-1.amazonaws.com/todo-app-ecr:latest
           ports:
             - containerPort: 80
