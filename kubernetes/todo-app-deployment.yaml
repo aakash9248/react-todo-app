@@ -12,6 +12,7 @@ spec:
       labels:
         app: react-todo-app
     spec:
+      serviceAccountName: ecr-service-account
       containers:
         - name: react-todo-app
           image: 975049936741.dkr.ecr.ap-south-1.amazonaws.com/todo-app-ecr:latest
