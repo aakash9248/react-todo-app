@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM node:14-alpine AS build
+FROM node:14 AS build
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application
-FROM nginx:alpine
+FROM nginx:latest
 
 # Copy the build artifacts from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html
