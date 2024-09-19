@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM node:14-alpine AS build  # Use the official Node.js image
+FROM node:14-alpine AS build
 
 # Set the working directory
 WORKDIR /app
@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application
-FROM nginx:alpine  # Use the official NGINX image
+FROM nginx:alpine
 
 # Copy the build artifacts from the previous stage to the NGINX directory
 COPY --from=build /app/build /usr/share/nginx/html
