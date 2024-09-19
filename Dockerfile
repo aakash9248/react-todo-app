@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM --platform=linux/amd64 node:14-alpine AS build  # Specify the x86 architecture
+FROM node:14-alpine AS build  # Use the default platform for the image
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application
-FROM --platform=linux/amd64 nginx:alpine  # Specify the x86 architecture
+FROM nginx:alpine  # Use the default platform for the image
 
 # Copy the build artifacts from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html
