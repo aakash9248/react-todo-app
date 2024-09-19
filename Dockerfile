@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM --platform=linux/amd64 node:14-buster AS build
+FROM --platform=linux/amd64 node:14-alpine AS build  # Specify the x86 architecture
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the application
-FROM nginx:latest
+FROM --platform=linux/amd64 nginx:alpine  # Specify the x86 architecture
 
 # Copy the build artifacts from the previous stage
 COPY --from=build /app/build /usr/share/nginx/html
