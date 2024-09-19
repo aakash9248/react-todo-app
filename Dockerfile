@@ -1,14 +1,14 @@
 # Stage 1: Build the application
-FROM node:14 AS build
+FROM node:14-buster AS build  # Use a Debian-based image for better compatibility
 
 WORKDIR /app
 
-# Copy package.json and package-lock.json (if available) and install dependencies
+# Copy package.json and package-lock.json
 COPY package*.json ./
 RUN npm install
 
 # Copy the rest of the application code
-COPY . . 
+COPY . .
 
 # Build the application
 RUN npm run build
